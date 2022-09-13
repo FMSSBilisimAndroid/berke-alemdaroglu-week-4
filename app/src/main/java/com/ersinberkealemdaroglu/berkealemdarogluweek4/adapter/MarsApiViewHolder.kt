@@ -5,6 +5,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.RecyclerviewItemRowBinding
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.util.downloadFromUrl
 
 class MarsApiViewHolder(
     val marsBinding: ViewDataBinding
@@ -16,6 +17,5 @@ class MarsApiViewHolder(
         binding.apply {
             setVariable(BR.marsDataModel, marsDataModel)
         }
-
     }
 }

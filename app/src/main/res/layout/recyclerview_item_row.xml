@@ -14,39 +14,50 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/mars_image"
-            android:layout_width="180dp"
-            android:layout_height="260dp"
+            android:id="@+id/mars_Image"
+            android:layout_width="192dp"
+            android:layout_height="234dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/get_started_background_image"
-            app:layout_constraintBottom_toTopOf="@+id/mars_id"
+            android:downloadImageUrl="@{marsDataModel.img_src}"
+            app:layout_constraintBottom_toTopOf="@+id/mars_Id"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/get_started_background_image" />
 
         <TextView
-            android:id="@+id/mars_price"
+            android:id="@+id/mars_Price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="@{marsDataModel.price}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mars_id"
+            app:layout_constraintEnd_toStartOf="@+id/mars_Id"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/mars_id"
+            android:id="@+id/mars_Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="68dp"
             android:text="@{marsDataModel.id}"
             app:drawableEndCompat="@drawable/mars_id_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/mars_image"
-            app:layout_constraintStart_toStartOf="@+id/mars_image"
-            app:layout_constraintTop_toTopOf="@+id/mars_price" />
+            app:layout_constraintEnd_toEndOf="@+id/mars_Image"
+            app:layout_constraintStart_toStartOf="@+id/mars_Image"
+            app:layout_constraintTop_toTopOf="@+id/mars_Price" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{marsDataModel.type}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

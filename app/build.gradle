@@ -38,15 +38,20 @@ android {
 }
 
 def retrofitVersion = '2.9.0'
-
+def preferencesVersion = '1.2.0'
+def glideVersion = '4.13.2'
 dependencies {
+
+
+    implementation "androidx.preference:preference:$preferencesVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
+
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
 
     //noinspection GradleDependency
