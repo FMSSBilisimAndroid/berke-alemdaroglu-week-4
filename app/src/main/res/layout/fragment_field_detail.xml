@@ -22,8 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
-            app:srcCompat="@drawable/detail_mars_image_demo"
+            android:downloadImageUrl="@{marsData.img_src}"
+            tools:srcCompat="@drawable/detail_mars_image_demo"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:drawableStart="@drawable/mars_id_icon"
-
+            android:text="@{marsData.id}"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mars_image"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="44dp"
-
+            android:text="@{marsData.price}"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mars_image"
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-
+            android:text="@{marsData.type}"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

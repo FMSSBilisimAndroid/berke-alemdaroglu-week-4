@@ -9,7 +9,7 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.view.HomeListFragmentDirections
 
 class MarsApiViewHolder(
-    val marsBinding: ViewDataBinding,
+    private val marsBinding: ViewDataBinding,
 ) : RecyclerView.ViewHolder(marsBinding.root) {
     fun onBind(marsDataModel: MarsDataModel) {
         val binding = marsBinding as RecyclerviewItemRowBinding
@@ -18,9 +18,9 @@ class MarsApiViewHolder(
             setVariable(BR.marsDataModel, marsDataModel)
 
             marsImage.setOnClickListener {
-                val action = HomeListFragmentDirections.actionHomeListFragmentToFieldDetailFragment(
-                    marsDataModel)
-                Navigation.findNavController(it).navigate(action)
+                Navigation.findNavController(it)
+                    .navigate(HomeListFragmentDirections.actionHomeListFragmentToFieldDetailFragment(
+                        marsDataModel))
             }
         }
     }
