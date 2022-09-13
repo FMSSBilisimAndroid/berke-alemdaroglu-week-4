@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 
-fun ImageView.downloadFromUrl(img_src: String?){
+fun ImageView.downloadFromUrl(img_src: String?) {
 
     img_src?.let {
         val imgUri = img_src.toUri().buildUpon().scheme("https").build()
@@ -19,12 +19,10 @@ fun ImageView.downloadFromUrl(img_src: String?){
             )
             .into(this)
     }
-
-
 }
 
 @BindingAdapter("android:downloadImageUrl")
-fun downloadImage(view: ImageView, img_src: String?){
+fun downloadImage(view: ImageView, img_src: String?) {
     view.downloadFromUrl(img_src)
 }
 

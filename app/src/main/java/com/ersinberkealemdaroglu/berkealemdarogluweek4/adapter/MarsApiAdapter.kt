@@ -9,9 +9,8 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
 
 class MarsApiAdapter(
-    private val marsArrayList: ArrayList<MarsDataModel>
+    private val marsArrayList: ArrayList<MarsDataModel>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val marsBinding = DataBindingUtil.inflate<ViewDataBinding>(
@@ -23,9 +22,13 @@ class MarsApiAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as MarsApiViewHolder).onBind(marsArrayList[position])
+
+
     }
 
     override fun getItemCount(): Int {
         return marsArrayList.size
     }
+
+
 }

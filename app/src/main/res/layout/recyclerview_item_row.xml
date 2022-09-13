@@ -11,9 +11,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
 
-        <ImageView
+
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mars_Image"
             android:layout_width="192dp"
             android:layout_height="234dp"
@@ -21,10 +23,12 @@
             android:downloadImageUrl="@{marsDataModel.img_src}"
             app:layout_constraintBottom_toTopOf="@+id/mars_Id"
             app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/get_started_background_image" />
+            tools:src="@drawable/get_started_background_image"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent"/>
 
         <TextView
             android:id="@+id/mars_Price"
@@ -36,6 +40,7 @@
             app:layout_constraintEnd_toStartOf="@+id/mars_Id"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mars_Image"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -51,11 +56,12 @@
             app:layout_constraintTop_toTopOf="@+id/mars_Price" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/mars_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/white"
             android:text="@{marsDataModel.type}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

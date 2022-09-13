@@ -17,9 +17,20 @@
     <fragment
         android:id="@+id/homeListFragment"
         android:name="com.ersinberkealemdaroglu.berkealemdarogluweek4.view.HomeListFragment"
-        android:label="HomeListFragment" />
+        android:label="HomeListFragment" >
+        <action
+            android:id="@+id/action_homeListFragment_to_fieldDetailFragment"
+            app:destination="@id/fieldDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fieldDetailFragment"
         android:name="com.ersinberkealemdaroglu.berkealemdarogluweek4.view.FieldDetailFragment"
-        android:label="FieldDetailFragment" />
+        android:label="FieldDetailFragment" >
+        <action
+            android:id="@+id/action_fieldDetailFragment_to_homeListFragment2"
+            app:destination="@id/homeListFragment" />
+        <argument
+            android:name="marsData"
+            app:argType="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
+    </fragment>
 </navigation>
