@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object MarsApi {
     private const val BASE_URL = "https://mars.udacity.com/"
 
-    val retrofit = Retrofit.Builder()
+    private val retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(BASE_URL)
         .build()

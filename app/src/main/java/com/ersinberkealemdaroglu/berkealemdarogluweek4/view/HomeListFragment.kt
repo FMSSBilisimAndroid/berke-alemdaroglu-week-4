@@ -14,6 +14,7 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.adapter.MarsApiAdapter
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.FragmentHomeListBinding
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.service.MarsApi
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.util.SharedPreferenceManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +22,8 @@ import retrofit2.Response
 class HomeListFragment : Fragment() {
     private lateinit var binding: FragmentHomeListBinding
     private var marsDataModel = ArrayList<MarsDataModel>()
+    private lateinit var sharedPreferenceManager: SharedPreferenceManager
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +36,10 @@ class HomeListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        logout()
+        context?.let {
+            sharedPreferenceManager = SharedPreferenceManager(it)
+        }
 
         getMarsApiData()
     }
@@ -62,6 +69,14 @@ class HomeListFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun logout() {
+
+        binding.button.setOnClickListener {
+            sharedPreferenceManager.setBool(false)
+        }
+
     }
 
 }

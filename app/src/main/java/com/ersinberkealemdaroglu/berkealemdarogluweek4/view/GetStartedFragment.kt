@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.FragmentGetStartedBinding
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.util.SharedPreferenceManager
 
 class GetStartedFragment : Fragment() {
     private lateinit var binding: FragmentGetStartedBinding
+    private lateinit var sharedPreferenceManager: SharedPreferenceManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,12 +25,21 @@ class GetStartedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getStartedButtonClicked()
+        context?.let {
+            sharedPreferenceManager = SharedPreferenceManager(it)
+        }
+        getStartedShared()
     }
 
-    private fun getStartedButtonClicked(){
-        binding.getStartedButton.setOnClickListener {
+    private fun getStartedShared() {
+
+        if (sharedPreferenceManager.getBool()) {
             findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
+        } else {
+            binding.getStartedButton.setOnClickListener {
+                sharedPreferenceManager.setBool(true)
+                findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
+            }
         }
     }
 
