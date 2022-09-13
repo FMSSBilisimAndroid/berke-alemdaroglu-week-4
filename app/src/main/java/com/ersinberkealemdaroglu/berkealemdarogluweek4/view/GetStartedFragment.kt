@@ -33,11 +33,11 @@ class GetStartedFragment : Fragment() {
 
     private fun getStartedShared() {
 
-        if (sharedPreferenceManager.getBool()) {
+        if (sharedPreferenceManager.getCheckStarted()) {
             findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
         } else {
             binding.getStartedButton.setOnClickListener {
-                sharedPreferenceManager.setBool(true)
+                sharedPreferenceManager.saveCheckStarted(true)
                 findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
             }
         }

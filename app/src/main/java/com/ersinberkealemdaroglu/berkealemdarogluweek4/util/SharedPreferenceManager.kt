@@ -14,12 +14,12 @@ class SharedPreferenceManager(context: Context) {
 
     private var bool = true
 
-    fun setBool(key: Boolean) {
+    fun saveCheckStarted(key: Boolean) {
         bool = key
         sharedPref.edit().putBoolean(CHECK_STARTED, bool).apply()
     }
 
-    fun getBool(): Boolean {
+    fun getCheckStarted(): Boolean {
         return sharedPref.getBoolean(CHECK_STARTED, bool)
     }
 

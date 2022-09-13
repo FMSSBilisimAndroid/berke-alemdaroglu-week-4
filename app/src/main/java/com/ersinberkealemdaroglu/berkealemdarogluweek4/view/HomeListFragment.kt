@@ -24,7 +24,6 @@ class HomeListFragment : Fragment() {
     private var marsDataModel = ArrayList<MarsDataModel>()
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -36,7 +35,9 @@ class HomeListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        logout()
+
+
+        sharedPreferenceClear()
         context?.let {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
@@ -71,10 +72,9 @@ class HomeListFragment : Fragment() {
         })
     }
 
-    private fun logout() {
-
+    private fun sharedPreferenceClear() {
         binding.button.setOnClickListener {
-            sharedPreferenceManager.setBool(false)
+            sharedPreferenceManager.saveCheckStarted(false)
         }
 
     }
