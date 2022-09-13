@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="marsDataModel"
+            type="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/mars_image"
+            android:layout_width="180dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/get_started_background_image"
+            app:layout_constraintBottom_toTopOf="@+id/mars_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/mars_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{marsDataModel.price}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mars_id"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/mars_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:text="@{marsDataModel.id}"
+            app:drawableEndCompat="@drawable/mars_id_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/mars_image"
+            app:layout_constraintStart_toStartOf="@+id/mars_image"
+            app:layout_constraintTop_toTopOf="@+id/mars_price" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

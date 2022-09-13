@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BerkeAlemdarogluWeek4</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mars_estate">MARS ESTATE</string>
+    <string name="get_started_info_text">Let’s Explore the\nSolar System\nwith Explorer</string>
+    <string name="get_started_button_text">Get Started</string>
 </resources>
