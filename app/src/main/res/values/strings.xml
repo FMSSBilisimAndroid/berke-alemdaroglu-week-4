@@ -4,4 +4,7 @@
     <string name="mars_estate">MARS ESTATE</string>
     <string name="get_started_info_text">Let’s Explore the\nSolar System\nwith Explorer</string>
     <string name="get_started_button_text">Get Started</string>
+    <string name="buy_now_be_a_martian">BUY NOW, BE A MARTIAN</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="detail_scren_for_rent">For</string>
 </resources>

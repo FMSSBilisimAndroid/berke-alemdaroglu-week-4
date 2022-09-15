@@ -34,36 +34,43 @@
             android:id="@+id/mars_Price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="@{marsDataModel.price}"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{marsDataModel.price + '\t' + '$'}"
+            android:padding="3dp"
+            android:textSize="17sp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/mars_Id"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mars_Image"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:text="65$.00" />
 
         <TextView
             android:id="@+id/mars_Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
+            android:drawablePadding="3dp"
+            android:padding="3dp"
+            android:textSize="17sp"
             android:text="@{marsDataModel.id}"
             app:drawableEndCompat="@drawable/mars_id_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/mars_Image"
-            app:layout_constraintStart_toStartOf="@+id/mars_Image"
-            app:layout_constraintTop_toTopOf="@+id/mars_Price" />
+            app:layout_constraintTop_toTopOf="@+id/mars_Price"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="498547" />
 
         <TextView
             android:id="@+id/mars_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/detail_scren_for_rent + ' ' +  marsDataModel.type}"
             android:textColor="@color/white"
-            android:text="@{marsDataModel.type}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/mars_Image"
+            app:layout_constraintTop_toTopOf="@+id/mars_Image"
+            tools:text="rent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="get_started_button">#F9AD1A</color>
+    <color name="detail_screen_line">#141414</color>
 </resources>
