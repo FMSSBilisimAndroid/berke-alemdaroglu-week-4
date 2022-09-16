@@ -1,14 +1,18 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.BR
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.MainActivity
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.adapter.MarsApiAdapter
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.FragmentHomeListBinding
@@ -75,8 +79,17 @@ class HomeListFragment : Fragment() {
     private fun sharedPreferenceClear() {
         binding.button.setOnClickListener {
             sharedPreferenceManager.saveCheckStarted(false)
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context?.startActivity(intent)
         }
 
     }
+
+    /**
+     * TODO en pahalıdan en ucuza sıralama yapılacak ve satın alınan arsalar satın alınanlar sayfasında gösterilecek.
+     */
 
 }

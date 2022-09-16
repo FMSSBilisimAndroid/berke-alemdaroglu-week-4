@@ -36,10 +36,10 @@
             style="@style/mart_estate" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/getStartedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/get_started_info_text"
+            android:text="@string/html"
             android:textAlignment="viewStart"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +59,7 @@
             android:text="@string/get_started_button_text"
             android:textColor="@color/white"
             android:textSize="22sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

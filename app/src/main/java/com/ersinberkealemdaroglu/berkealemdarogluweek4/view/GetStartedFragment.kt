@@ -1,6 +1,8 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,7 @@ class GetStartedFragment : Fragment() {
     ): View {
         binding = FragmentGetStartedBinding.inflate(inflater)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,13 +31,21 @@ class GetStartedFragment : Fragment() {
         context?.let {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
+
+        //Text Html
+        binding.getStartedTitle.text = Html.fromHtml(getString(R.string.html))
+
         getStartedShared()
     }
 
     private fun getStartedShared() {
 
         if (sharedPreferenceManager.getCheckStarted()) {
-            findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
+            binding.getStartedButton.visibility = View.INVISIBLE
+            Handler().postDelayed({
+                findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
+            }, 1000)
+
         } else {
             binding.getStartedButton.setOnClickListener {
                 sharedPreferenceManager.saveCheckStarted(true)

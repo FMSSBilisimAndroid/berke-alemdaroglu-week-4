@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BerkeAlemdarogluWeek4</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mars_estate">MARS ESTATE</string>
@@ -7,4 +7,5 @@
     <string name="buy_now_be_a_martian">BUY NOW, BE A MARTIAN</string>
     <string name="buy_now">Buy Now</string>
     <string name="detail_scren_for_rent">For</string>
+    <string name="html" tools:ignore="Typos"><![CDATA[<p><font color=#000>Let’s Explore the</font><br><b><font color=#F9AD1A>Solar System</font><b><br><b><font color=#000>with</font><font color=#F9AD1A> Explorer</font><b></p>]]></string>
 </resources>

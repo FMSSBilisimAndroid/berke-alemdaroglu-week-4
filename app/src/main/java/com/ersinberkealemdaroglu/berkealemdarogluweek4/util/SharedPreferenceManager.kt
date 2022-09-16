@@ -12,15 +12,15 @@ class SharedPreferenceManager(context: Context) {
         const val CHECK_STARTED = "com.ersinberkealemdaroglu.STARTED"
     }
 
-    private var bool = true
+    private var isLogin = true
 
     fun saveCheckStarted(key: Boolean) {
-        bool = key
-        sharedPref.edit().putBoolean(CHECK_STARTED, bool).apply()
+        isLogin = key
+        sharedPref.edit().putBoolean(CHECK_STARTED, isLogin).apply()
     }
 
     fun getCheckStarted(): Boolean {
-        return sharedPref.getBoolean(CHECK_STARTED, bool)
+        return sharedPref.getBoolean(CHECK_STARTED, isLogin)
     }
 
 }
