@@ -10,9 +10,9 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 fun ImageView.downloadFromUrl(img_src: String?) {
 
     img_src?.let {
-        val imgUri = img_src.toUri().buildUpon().scheme("https").build()
+        //val imgUri = img_src.toUri().buildUpon().scheme("https").build()
         Glide.with(context)
-            .load(imgUri)
+            .load(img_src)
             .apply(RequestOptions()
                 .placeholder(R.drawable.loading_animation)
                 .error(R.drawable.get_started_button_icon)

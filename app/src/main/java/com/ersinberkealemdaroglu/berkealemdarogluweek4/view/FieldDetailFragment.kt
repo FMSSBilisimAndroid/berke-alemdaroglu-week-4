@@ -19,8 +19,7 @@ class FieldDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        dataBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_field_detail, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_field_detail, container, false)
         return dataBinding.root
     }
 
