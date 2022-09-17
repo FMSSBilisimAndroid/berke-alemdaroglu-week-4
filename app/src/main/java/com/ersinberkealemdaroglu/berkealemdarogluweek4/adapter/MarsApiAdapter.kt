@@ -1,5 +1,6 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -9,7 +10,7 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
 
 class MarsApiAdapter(
-    private val marsArrayList: ArrayList<MarsDataModel>,
+    private var marsArrayList: ArrayList<MarsDataModel> = ArrayList(),
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -28,6 +29,13 @@ class MarsApiAdapter(
 
     override fun getItemCount(): Int {
         return marsArrayList.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setMarsArrayList(marsArrayList: List<MarsDataModel>){
+        this.marsArrayList.clear()
+        this.marsArrayList.addAll(marsArrayList)
+        notifyDataSetChanged()
     }
 
 

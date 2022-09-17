@@ -32,5 +32,16 @@
         <argument
             android:name="marsData"
             app:argType="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
+        <action
+            android:id="@+id/action_fieldDetailFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.ersinberkealemdaroglu.berkealemdarogluweek4.view.BottomSheetFragment"
+        android:label="BottomSheetFragment" >
+        <argument
+            android:name="marsData"
+            app:argType="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
+    </dialog>
 </navigation>

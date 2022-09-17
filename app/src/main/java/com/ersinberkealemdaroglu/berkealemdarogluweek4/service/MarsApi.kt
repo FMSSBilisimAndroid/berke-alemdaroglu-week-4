@@ -1,5 +1,6 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.service
 
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,4 +15,5 @@ object MarsApi {
     val retrofitService: MarsApiService by lazy {
         retrofit.create(MarsApiService::class.java)
     }
+
 }

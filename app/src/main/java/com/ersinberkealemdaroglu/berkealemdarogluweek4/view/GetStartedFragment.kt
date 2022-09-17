@@ -2,10 +2,12 @@ package com.ersinberkealemdaroglu.berkealemdarogluweek4.view
 
 import android.os.Bundle
 import android.os.Handler
-import android.text.Html
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
@@ -20,7 +22,7 @@ class GetStartedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentGetStartedBinding.inflate(inflater)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_get_started, container, false)
         return binding.root
 
     }
@@ -33,7 +35,8 @@ class GetStartedFragment : Fragment() {
         }
 
         //Text Html
-        binding.getStartedTitle.text = Html.fromHtml(getString(R.string.html))
+        binding.getStartedTitle.text =
+            HtmlCompat.fromHtml(getString(R.string.html), HtmlCompat.FROM_HTML_MODE_LEGACY)
 
         getStartedShared()
     }
@@ -42,9 +45,11 @@ class GetStartedFragment : Fragment() {
 
         if (sharedPreferenceManager.getCheckStarted()) {
             binding.getStartedButton.visibility = View.INVISIBLE
-            Handler().postDelayed({
-                findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
-            }, 1000)
+            Looper.myLooper()?.let {
+                Handler(it).postDelayed({
+                    findNavController().navigate(R.id.action_getStartedFragment_to_homeListFragment)
+                }, 1000)
+            }
 
         } else {
             binding.getStartedButton.setOnClickListener {

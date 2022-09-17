@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="get_started_button">#F9AD1A</color>
     <color name="detail_screen_line">#141414</color>
+    <color name="bottom_sheet_info_text">#464646</color>
 </resources>

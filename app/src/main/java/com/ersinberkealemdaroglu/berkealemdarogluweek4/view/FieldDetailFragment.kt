@@ -15,44 +15,75 @@ class FieldDetailFragment : Fragment() {
     private lateinit var dataBinding: FragmentFieldDetailBinding
     private val navArgs: FieldDetailFragmentArgs? by navArgs()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_field_detail, container, false)
+        dataBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_field_detail, container, false)
         return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
+    }
+
+    private fun init() {
         setMarsDataDetailsByArgs()
         bottomSheetController()
         backButtonController()
+        isItSold()
+        //imageFull()
     }
 
     private fun setMarsDataDetailsByArgs() {
         navArgs?.let {
             dataBinding.marsData = it.marsData
-
         }
     }
 
-    private fun bottomSheetController(){
-        val bottomSheetFragment = BottomSheetFragment()
+    private fun bottomSheetController() {
         dataBinding.buyNowButton.setOnClickListener {
-            /**
-             * TODO ödeme tamamlandıktan sonra ödeme için teşekkür ederiz bölümü etklinleştirilecek.
-             */
-            bottomSheetFragment.show(childFragmentManager, "tag")
+            navArgs?.let {
+                findNavController().navigate(FieldDetailFragmentDirections.actionFieldDetailFragmentToBottomSheetFragment(
+                    it.marsData))
+            }
         }
     }
 
-    private fun backButtonController(){
+    private fun isItSold() {
+
+
+    }
+
+    private fun backButtonController() {
         dataBinding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_fieldDetailFragment_to_homeListFragment2)
         }
     }
+
+/*    private fun imageFull(){
+        var isImageFit = true
+        dataBinding.marsImage.setOnClickListener{
+            if (isImageFit){
+                isImageFit = false
+                dataBinding.marsImage.setLayoutParams(
+                    LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                    )
+                )
+                dataBinding.marsImage.adjustViewBounds = true
+            }else{
+                dataBinding.marsImage.setOnClickListener {
+
+                }
+            }
+        }
+    }*/
 
 
 }

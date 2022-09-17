@@ -5,25 +5,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.BR
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.MainActivity
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.adapter.MarsApiAdapter
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.FragmentHomeListBinding
-import com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel
-import com.ersinberkealemdaroglu.berkealemdarogluweek4.service.MarsApi
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.util.SharedPreferenceManager
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.ersinberkealemdaroglu.berkealemdarogluweek4.viewmodel.HomeListViewModel
 
 class HomeListFragment : Fragment() {
     private lateinit var binding: FragmentHomeListBinding
-    private var marsDataModel = ArrayList<MarsDataModel>()
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
+    private val homeListViewModel by viewModels<HomeListViewModel>()
+    private var adapter: MarsApiAdapter = MarsApiAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,40 +36,64 @@ class HomeListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        init()
+    }
+
+    private fun init() {
         sharedPreferenceClear()
         context?.let {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
 
+        refreshData()
         getMarsApiData()
     }
 
+
     private fun getMarsApiData() {
 
-        MarsApi.retrofitService.getProperties().enqueue(object : Callback<List<MarsDataModel>> {
-            override fun onResponse(
-                call: Call<List<MarsDataModel>>,
-                response: Response<List<MarsDataModel>>,
-            ) {
-                response.body()?.let { responseLists ->
-                    marsDataModel = ArrayList(responseLists)
-                    val adapter = MarsApiAdapter(ArrayList(responseLists))
+        homeListViewModel.getMarsData().observe(viewLifecycleOwner) { marsValue ->
+            adapter.setMarsArrayList(marsValue)
+            val gridLayoutManager = GridLayoutManager(context, 2)
+            binding.apply {
+                recyclerview.layoutManager = gridLayoutManager
+                setVariable(BR.marsAdapter, adapter)
+            }
+        }
 
-                    val gridLayoutManager = GridLayoutManager(context, 2)
-                    binding.apply {
-                        recyclerview.layoutManager = gridLayoutManager
-                            setVariable(BR.marsAdapter, adapter)
+
+
+    }
+
+    private fun refreshData(){
+        binding.apply {
+            swipeRefreshLayout.setOnRefreshListener {
+                recyclerview.visibility = View.INVISIBLE
+                marsLoading.visibility = View.INVISIBLE
+                homeListViewModel.getMarsData()
+                swipeRefreshLayout.isRefreshing = false
+            }
+
+        }
+
+
+        homeListViewModel.marsLoading.observe(viewLifecycleOwner){ loading ->
+            loading?.let {
+                binding.apply {
+                    if (it){
+                        marsLoading.visibility = View.VISIBLE
+                        recyclerview.visibility = View.INVISIBLE
+                    }else{
+                        recyclerview.visibility = View.VISIBLE
+                        marsLoading.visibility = View.GONE
                     }
-
                 }
             }
+        }
 
-            override fun onFailure(call: Call<List<MarsDataModel>>, t: Throwable) {
-                Toast.makeText(context, "veri gelmedi", Toast.LENGTH_SHORT).show()
-            }
 
-        })
     }
+
 
     private fun sharedPreferenceClear() {
         binding.button.setOnClickListener {
@@ -85,8 +107,5 @@ class HomeListFragment : Fragment() {
 
     }
 
-    /**
-     * TODO en pahalıdan en ucuza sıralama yapılacak ve satın alınan arsalar satın alınanlar sayfasında gösterilecek.
-     */
 
 }

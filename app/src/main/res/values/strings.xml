@@ -8,4 +8,8 @@
     <string name="buy_now">Buy Now</string>
     <string name="detail_scren_for_rent">For</string>
     <string name="html" tools:ignore="Typos"><![CDATA[<p><font color=#000>Let’s Explore the</font><br><b><font color=#F9AD1A>Solar System</font><b><br><b><font color=#000>with</font><font color=#F9AD1A> Explorer</font><b></p>]]></string>
+    <string name="pay_now">PAY NOW</string>
+    <string name="payout">Payout</string>
+    <string name="pay_out_your_balance_now">Pay out your balance now</string>
+    <string name="payment_confirmed">Payment Confirmed</string>
 </resources>

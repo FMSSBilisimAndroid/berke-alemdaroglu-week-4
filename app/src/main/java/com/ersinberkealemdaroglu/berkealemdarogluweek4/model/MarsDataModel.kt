@@ -8,5 +8,5 @@ data class MarsDataModel(
     val price: String,
     val id: String,
     val type: String,
-    val img_src: String
+    val img_src: String,
 ) : Parcelable

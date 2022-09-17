@@ -1,7 +1,6 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.util
 
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -25,4 +24,5 @@ fun ImageView.downloadFromUrl(img_src: String?) {
 fun downloadImage(view: ImageView, img_src: String?) {
     view.downloadFromUrl(img_src)
 }
+
 

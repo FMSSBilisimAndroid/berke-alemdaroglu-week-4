@@ -1,4 +1,4 @@
-package com.ersinberkealemdaroglu.berkealemdarogluweek4.view
+package com.ersinberkealemdaroglu.berkealemdarogluweek4
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
