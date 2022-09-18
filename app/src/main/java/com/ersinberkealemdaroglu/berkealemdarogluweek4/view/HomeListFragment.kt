@@ -1,6 +1,5 @@
 package com.ersinberkealemdaroglu.berkealemdarogluweek4.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.BR
-import com.ersinberkealemdaroglu.berkealemdarogluweek4.MainActivity
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.R
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.adapter.MarsApiAdapter
 import com.ersinberkealemdaroglu.berkealemdarogluweek4.databinding.FragmentHomeListBinding
@@ -20,7 +19,7 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.viewmodel.HomeListViewMod
 class HomeListFragment : Fragment() {
     private lateinit var binding: FragmentHomeListBinding
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
-    private val homeListViewModel : HomeListViewModel by viewModels()
+    private val homeListViewModel: HomeListViewModel by viewModels()
     private var adapter: MarsApiAdapter = MarsApiAdapter(arrayListOf())
 
     override fun onCreateView(
@@ -46,6 +45,7 @@ class HomeListFragment : Fragment() {
 
         refreshData()
         getMarsApiData()
+        logOutButton()
     }
 
 
@@ -66,13 +66,12 @@ class HomeListFragment : Fragment() {
         }
 
 
-
     }
 
     /**
      * xml de verdiğimiz swipeRefreshLayout u refresh atıldığında olacak durumları belirliyoruz. HomeListViewModel.getMarsData() ile de veriler tekrar apiden çekiliyor.
      */
-    private fun refreshData(){
+    private fun refreshData() {
         binding.apply {
             swipeRefreshLayout.setOnRefreshListener {
                 recyclerview.visibility = View.INVISIBLE
@@ -86,21 +85,26 @@ class HomeListFragment : Fragment() {
         /**
          * xml de verdiğim ProgressBar ın durumunu belirliyoruz. Observe ile homeListViewModel de tanımlanan loading boolean değerini alarak gerekli düzenlemeleri sağlıyoruz.
          */
-        homeListViewModel.marsLoading.observe(viewLifecycleOwner){ loading ->
+        homeListViewModel.marsLoading.observe(viewLifecycleOwner) { loading ->
             loading?.let {
                 binding.apply {
-                    if (it){
+                    if (it) {
                         marsLoading.visibility = View.VISIBLE
                         recyclerview.visibility = View.INVISIBLE
-                    }else{
+                    } else {
                         recyclerview.visibility = View.VISIBLE
                         marsLoading.visibility = View.GONE
                     }
                 }
             }
         }
+    }
 
-
+    private fun logOutButton() {
+        binding.logOutButton.setOnClickListener {
+            sharedPreferenceManager.saveCheckStarted(false)
+            findNavController().navigate(R.id.action_homeListFragment_to_getStartedFragment)
+        }
     }
 
 }

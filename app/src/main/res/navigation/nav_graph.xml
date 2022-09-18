@@ -21,6 +21,11 @@
         <action
             android:id="@+id/action_homeListFragment_to_fieldDetailFragment"
             app:destination="@id/fieldDetailFragment" />
+        <action
+            android:id="@+id/action_homeListFragment_to_getStartedFragment"
+            app:destination="@id/getStartedFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/fieldDetailFragment"
