@@ -19,7 +19,15 @@
 <img  src="https://github-readme-stats.vercel.app/api/top-langs/?username=berkealemdaroglu&layout=compact&hide=html,css" alt="My Top Langs" />
 
 # App Preview Video
+https://user-images.githubusercontent.com/50260160/190921827-41aa128c-fd83-4451-88b7-c17a2a54c3aa.mp4
 
-https://user-images.githubusercontent.com/50260160/190904292-8ec82ac8-6bbd-4f7e-bd7f-1671e90b536b.mp4
+## Technologies
+<ul dir="auto">
+<li>MVVM</li>
+<li>Retrofit</li>
+<li>Glide</li>
+</ul>
+
+
 
 
