@@ -18,6 +18,8 @@
 <!--Most Used Languages-->
 <img  src="https://github-readme-stats.vercel.app/api/top-langs/?username=berkealemdaroglu&layout=compact&hide=html,css" alt="My Top Langs" />
 
+# App Preview Video
 
+https://user-images.githubusercontent.com/50260160/190904292-8ec82ac8-6bbd-4f7e-bd7f-1671e90b536b.mp4
 
 
