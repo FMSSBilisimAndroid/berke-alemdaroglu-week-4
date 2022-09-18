@@ -33,8 +33,6 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         payNowButton()
-
-
     }
 
     private fun payNowButton() {

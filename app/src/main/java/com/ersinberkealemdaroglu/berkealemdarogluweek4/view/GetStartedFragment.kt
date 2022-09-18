@@ -30,6 +30,10 @@ class GetStartedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
+    }
+
+    private fun init(){
         context?.let {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
@@ -41,8 +45,10 @@ class GetStartedFragment : Fragment() {
         getStartedShared()
     }
 
+    /**
+     * SharedPreference ile getStartedFragmentteki butona kullanıcı bir defa bastıktan sonra her girişte splash ekran gibi 1 saniye gösteriliyor sonra homeListFragmentta geçişi sağlanıyor.
+     */
     private fun getStartedShared() {
-
         if (sharedPreferenceManager.getCheckStarted()) {
             binding.getStartedButton.visibility = View.INVISIBLE
             Looper.myLooper()?.let {

@@ -15,7 +15,6 @@ class FieldDetailFragment : Fragment() {
     private lateinit var dataBinding: FragmentFieldDetailBinding
     private val navArgs: FieldDetailFragmentArgs? by navArgs()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -23,11 +22,11 @@ class FieldDetailFragment : Fragment() {
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_field_detail, container, false)
         return dataBinding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         init()
     }
 
@@ -35,16 +34,22 @@ class FieldDetailFragment : Fragment() {
         setMarsDataDetailsByArgs()
         bottomSheetController()
         backButtonController()
-        isItSold()
         imageFull()
+
     }
 
+    /**
+     * homeListFragmentta safe argument ile gönderdiğimiz verileri navArgs ile xml de verdiğimiz marsData verileri ile eşitliyoruz.
+     */
     private fun setMarsDataDetailsByArgs() {
         navArgs?.let {
             dataBinding.marsData = it.marsData
         }
     }
 
+    /**
+     * buyNowButton butonuna bastığımızda açılan bottomSheetFragment a yine safe argument ile marsDatalarını gönderiyoruz ve bottomSheetFragmentine geçiş yapıyoruz.
+     */
     private fun bottomSheetController() {
         dataBinding.buyNowButton.setOnClickListener {
             navArgs?.let {
@@ -54,19 +59,14 @@ class FieldDetailFragment : Fragment() {
         }
     }
 
-    private fun isItSold() {
-
-
-    }
-
     private fun backButtonController() {
-        dataBinding.marsImage.setOnClickListener {
-                findNavController().navigate(FieldDetailFragmentDirections.actionFieldDetailFragmentToHomeListFragment2())
+        dataBinding.backButton.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
     private fun imageFull() {
-        dataBinding.marsImage.setOnClickListener{
+        dataBinding.marsImage.setOnClickListener {
             navArgs?.let {
                 findNavController().navigate(FieldDetailFragmentDirections.actionFieldDetailFragmentToFullSizeImageFragment(
                     it.marsData))

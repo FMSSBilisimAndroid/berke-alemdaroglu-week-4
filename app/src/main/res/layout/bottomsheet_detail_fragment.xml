@@ -69,9 +69,10 @@
 
         <TextView
             android:id="@+id/payConfirmed"
-            android:layout_width="266dp"
-            android:layout_height="49dp"
+            android:layout_width="358dp"
+            android:layout_height="60dp"
             android:text="@string/payment_confirmed"
+            android:gravity="center"
             android:textSize="30sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"

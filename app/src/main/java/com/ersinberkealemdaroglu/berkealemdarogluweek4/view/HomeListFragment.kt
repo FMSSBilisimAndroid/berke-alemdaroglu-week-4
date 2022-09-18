@@ -20,7 +20,7 @@ import com.ersinberkealemdaroglu.berkealemdarogluweek4.viewmodel.HomeListViewMod
 class HomeListFragment : Fragment() {
     private lateinit var binding: FragmentHomeListBinding
     private lateinit var sharedPreferenceManager: SharedPreferenceManager
-    private val homeListViewModel by viewModels<HomeListViewModel>()
+    private val homeListViewModel : HomeListViewModel by viewModels()
     private var adapter: MarsApiAdapter = MarsApiAdapter(arrayListOf())
 
     override fun onCreateView(
@@ -49,6 +49,11 @@ class HomeListFragment : Fragment() {
     }
 
 
+    /**
+     * homeListViewModel içindeki marsValueden gelen livedataları observe ederek recyclerview içerisine ekliyoruz.
+     * recyclerview i gridLayoutManager ile 2 li grid yapıda olmasını sağlıyoruz.
+     * BR ile de xml de verilen adapter datasına ulaşarak verileri setliyoruz.
+     */
     private fun getMarsApiData() {
 
         homeListViewModel.getMarsData().observe(viewLifecycleOwner) { marsValue ->
@@ -64,6 +69,9 @@ class HomeListFragment : Fragment() {
 
     }
 
+    /**
+     * xml de verdiğimiz swipeRefreshLayout u refresh atıldığında olacak durumları belirliyoruz. HomeListViewModel.getMarsData() ile de veriler tekrar apiden çekiliyor.
+     */
     private fun refreshData(){
         binding.apply {
             swipeRefreshLayout.setOnRefreshListener {
@@ -75,7 +83,9 @@ class HomeListFragment : Fragment() {
 
         }
 
-
+        /**
+         * xml de verdiğim ProgressBar ın durumunu belirliyoruz. Observe ile homeListViewModel de tanımlanan loading boolean değerini alarak gerekli düzenlemeleri sağlıyoruz.
+         */
         homeListViewModel.marsLoading.observe(viewLifecycleOwner){ loading ->
             loading?.let {
                 binding.apply {

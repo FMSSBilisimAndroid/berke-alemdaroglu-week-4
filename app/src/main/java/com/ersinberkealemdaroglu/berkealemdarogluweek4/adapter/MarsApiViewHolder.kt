@@ -14,9 +14,16 @@ class MarsApiViewHolder(
     fun onBind(marsDataModel: MarsDataModel) {
         val binding = marsBinding as RecyclerviewItemRowBinding
 
+        /**
+         *  BR ile xmlde tanımlanan marsDataModelimizde ulaşarak marsDataModel ini set ediyoruz.
+         */
         binding.apply {
             setVariable(BR.marsDataModel, marsDataModel)
 
+            /**
+             * Recyclerview da ki imageye tıklandığında fieldDetailFragmentta yönlendirilmesi yapılıyor.
+             * marsDataModel ile verileri de argument ile göndermiş oluyoruz.
+             */
             marsImage.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(HomeListFragmentDirections.actionHomeListFragmentToFieldDetailFragment(
