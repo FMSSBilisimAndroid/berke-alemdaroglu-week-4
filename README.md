@@ -19,7 +19,7 @@
 <img  src="https://github-readme-stats.vercel.app/api/top-langs/?username=berkealemdaroglu&layout=compact&hide=html,css" alt="My Top Langs" />
 
 # App Preview Video
-https://user-images.githubusercontent.com/50260160/190921827-41aa128c-fd83-4451-88b7-c17a2a54c3aa.mp4
+https://user-images.githubusercontent.com/50260160/190922019-a838d364-ed7a-4424-921f-acf41e0e622c.mp4
 
 ## Technologies
 <ul dir="auto">
