@@ -15,7 +15,6 @@ class HomeListViewModel : ViewModel() {
     private var _marsValue = MutableLiveData<List<MarsDataModel>>()
     val marsValue: LiveData<List<MarsDataModel>> = _marsValue
 
-
     /**
      * @return mutablelivedata dan gelen marsdatamodel listteki verileri dönüyoruz. Bu sayede getMarsData() çağırıldığında marsValuedeki verileri kullanabiliyoruz.
      */

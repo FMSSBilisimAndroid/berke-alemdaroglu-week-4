@@ -34,7 +34,6 @@ class HomeListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         init()
     }
 
@@ -43,9 +42,10 @@ class HomeListFragment : Fragment() {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
 
-        refreshData()
         getMarsApiData()
+        refreshData()
         logOutButton()
+        loadingData()
     }
 
 
@@ -55,17 +55,12 @@ class HomeListFragment : Fragment() {
      * BR ile de xml de verilen adapter datasına ulaşarak verileri setliyoruz.
      */
     private fun getMarsApiData() {
-
         homeListViewModel.getMarsData().observe(viewLifecycleOwner) { marsValue ->
             adapter.setMarsArrayList(marsValue)
             val gridLayoutManager = GridLayoutManager(context, 2)
-            binding.apply {
-                recyclerview.layoutManager = gridLayoutManager
-                setVariable(BR.marsAdapter, adapter)
-            }
+            binding.recyclerview.layoutManager = gridLayoutManager
+            binding.recyclerview.adapter = adapter
         }
-
-
     }
 
     /**
@@ -81,10 +76,12 @@ class HomeListFragment : Fragment() {
             }
 
         }
+    }
 
-        /**
-         * xml de verdiğim ProgressBar ın durumunu belirliyoruz. Observe ile homeListViewModel de tanımlanan loading boolean değerini alarak gerekli düzenlemeleri sağlıyoruz.
-         */
+    /**
+     * xml de verdiğim ProgressBar ın durumunu belirliyoruz. Observe ile homeListViewModel de tanımlanan loading boolean değerini alarak gerekli düzenlemeleri sağlıyoruz.
+     */
+    private fun loadingData(){
         homeListViewModel.marsLoading.observe(viewLifecycleOwner) { loading ->
             loading?.let {
                 binding.apply {
