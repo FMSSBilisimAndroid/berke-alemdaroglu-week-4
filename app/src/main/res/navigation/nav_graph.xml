@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_fieldDetailFragment_to_bottomSheetFragment"
             app:destination="@id/bottomSheetFragment" />
+        <action
+            android:id="@+id/action_fieldDetailFragment_to_fullSizeImageFragment"
+            app:destination="@id/fullSizeImageFragment" />
     </fragment>
     <dialog
         android:id="@+id/bottomSheetFragment"
@@ -44,4 +47,15 @@
             android:name="marsData"
             app:argType="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
     </dialog>
+    <fragment
+        android:id="@+id/fullSizeImageFragment"
+        android:name="com.ersinberkealemdaroglu.berkealemdarogluweek4.view.FullSizeImageFragment"
+        android:label="FullSizeImageFragment" >
+        <argument
+            android:name="marsData"
+            app:argType="com.ersinberkealemdaroglu.berkealemdarogluweek4.model.MarsDataModel" />
+        <action
+            android:id="@+id/action_fullSizeImageFragment_to_fieldDetailFragment"
+            app:destination="@id/fieldDetailFragment" />
+    </fragment>
 </navigation>

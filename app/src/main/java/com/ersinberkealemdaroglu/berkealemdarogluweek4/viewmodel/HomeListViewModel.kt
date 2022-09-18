@@ -13,7 +13,7 @@ class HomeListViewModel : ViewModel() {
 
     val marsLoading = MutableLiveData<Boolean>()
     private var _marsValue = MutableLiveData<List<MarsDataModel>>()
-    private val marsValue: LiveData<List<MarsDataModel>> = _marsValue
+    val marsValue: LiveData<List<MarsDataModel>> = _marsValue
 
     fun getMarsData(): LiveData<List<MarsDataModel>> {
         marsLoading.value = true
@@ -27,7 +27,7 @@ class HomeListViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<MarsDataModel>>, t: Throwable) {
-                marsLoading.value = false
+                marsLoading.value = true
             }
 
         })

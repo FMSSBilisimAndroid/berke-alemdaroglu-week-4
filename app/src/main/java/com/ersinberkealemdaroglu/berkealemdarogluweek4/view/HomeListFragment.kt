@@ -40,7 +40,6 @@ class HomeListFragment : Fragment() {
     }
 
     private fun init() {
-        sharedPreferenceClear()
         context?.let {
             sharedPreferenceManager = SharedPreferenceManager(it)
         }
@@ -93,19 +92,5 @@ class HomeListFragment : Fragment() {
 
 
     }
-
-
-    private fun sharedPreferenceClear() {
-        binding.button.setOnClickListener {
-            sharedPreferenceManager.saveCheckStarted(false)
-            val intent = Intent(context, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context?.startActivity(intent)
-        }
-
-    }
-
 
 }

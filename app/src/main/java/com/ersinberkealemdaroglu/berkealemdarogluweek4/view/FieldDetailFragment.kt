@@ -36,7 +36,7 @@ class FieldDetailFragment : Fragment() {
         bottomSheetController()
         backButtonController()
         isItSold()
-        //imageFull()
+        imageFull()
     }
 
     private fun setMarsDataDetailsByArgs() {
@@ -60,30 +60,19 @@ class FieldDetailFragment : Fragment() {
     }
 
     private fun backButtonController() {
-        dataBinding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.action_fieldDetailFragment_to_homeListFragment2)
+        dataBinding.marsImage.setOnClickListener {
+                findNavController().navigate(FieldDetailFragmentDirections.actionFieldDetailFragmentToHomeListFragment2())
         }
     }
 
-/*    private fun imageFull(){
-        var isImageFit = true
+    private fun imageFull() {
         dataBinding.marsImage.setOnClickListener{
-            if (isImageFit){
-                isImageFit = false
-                dataBinding.marsImage.setLayoutParams(
-                    LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT
-                    )
-                )
-                dataBinding.marsImage.adjustViewBounds = true
-            }else{
-                dataBinding.marsImage.setOnClickListener {
-
-                }
+            navArgs?.let {
+                findNavController().navigate(FieldDetailFragmentDirections.actionFieldDetailFragmentToFullSizeImageFragment(
+                    it.marsData))
             }
         }
-    }*/
+    }
 
 
 }
